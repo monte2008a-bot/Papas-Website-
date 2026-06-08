@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Papas — Meat &amp; Seafood</title>
+<meta name="description" content="Papas Meat & Seafood — a family butcher and kitchen. Burbank & La Crescenta, California." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&display=swap" rel="stylesheet" />
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTQiIGZpbGw9IiNFQzQ1MTUiLz4KICA8dGV4dCB4PSIzMiIgeT0iNDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmNoaXZvLCBBcmlhbCwgc2Fucy1zZXJpZiIKICAgICAgICBmb250LXNpemU9IjQyIiBmb250LXdlaWdodD0iOTAwIiBmaWxsPSIjRjRGMEU3Ij5QPC90ZXh0Pgo8L3N2Zz4K" type="image/svg+xml" />
+<style>
+/* ============================================================
+   PAPAS — Meat & Seafood
+   Fashion-house butcher. Jacquemus × John&Vinny's, made into one.
+   Palette: eggshell ground · warm near-black ink · butcher orange
+   Type: Archivo (bold grotesque display + body) · Fraunces (serif accents)
+   ============================================================ */
+
+:root{
+  --egg:        #F4F0E7;   /* page ground (eggshell) */
+  --egg-2:      #ECE5D6;   /* deeper panel */
+  --ink:        #17150F;   /* warm near-black */
+  --ink-soft:   #423D33;
+  --muted:      #6B6358;   /* AA on egg */
+  --orange:     #EC4515;   /* butcher orange */
+  --orange-deep:#C5380F;
+  --line:       rgba(23,21,15,.14);
+  --line-light: rgba(244,240,231,.22);
+
+  --maxw: 1320px;
+  --pad: clamp(20px, 5vw, 80px);
+  --ease: cubic-bezier(.22,.61,.36,1);
+}
+
+/* ---------- reset ---------- */
+*{box-sizing:border-box;margin:0;padding:0}
+html{ -webkit-text-size-adjust:100%; }
+html.lenis, html.lenis body{ height:auto }
+.lenis.lenis-smooth{ scroll-behavior:auto !important }
+body{
+  font-family:'Archivo',system-ui,sans-serif;
+  background:var(--egg); color:var(--ink);
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+em{font-style:italic}
+::selection{background:var(--orange);color:#fff}
+
+/* ---------- type helpers ---------- */
+.kicker{
+  font-size:13px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--orange);display:inline-block;
+}
+.kicker--light{color:var(--orange)}
+.section-title{
+  font-weight:900;letter-spacing:-.03em;line-height:.92;
+  font-size:clamp(40px,8vw,104px);text-wrap:balance;margin-top:.25em;
+}
+.section-title em{font-family:'Fraunces',serif;font-weight:500;font-style:italic;letter-spacing:-.01em}
+.section-title--light{color:var(--egg)}
+.section-sub{margin-top:1.2em;max-width:46ch;color:var(--muted);font-size:clamp(15px,1.5vw,18px);line-height:1.55}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.6em;
+  font-weight:700;letter-spacing:.02em;border-radius:999px;
+  padding:14px 28px;font-size:15px;transition:transform .35s var(--ease),background .3s,color .3s,border-color .3s;
+  white-space:nowrap;cursor:pointer;border:1.5px solid transparent;
+}
+.btn--lg{padding:18px 38px;font-size:16px}
+.btn--order{background:var(--orange);color:#fff}
+.btn--order:hover{background:var(--orange-deep);transform:translateY(-2px)}
+.btn--ghost{border-color:var(--orange);color:var(--orange)}
+.btn--ghost:hover{background:var(--orange);color:#fff;border-color:var(--orange);transform:translateY(-2px)}
+
+/* ---------- overlays: grain + vignette ---------- */
+.grain{
+  position:fixed;inset:-50%;z-index:9000;pointer-events:none;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:grain 6s steps(6) infinite;
+}
+@keyframes grain{
+  0%{transform:translate(0,0)}10%{transform:translate(-4%,-4%)}30%{transform:translate(3%,-2%)}
+  50%{transform:translate(-2%,3%)}70%{transform:translate(4%,2%)}90%{transform:translate(-3%,1%)}100%{transform:translate(0,0)}
+}
+.vignette{position:fixed;inset:0;z-index:8999;pointer-events:none;
+  box-shadow:inset 0 0 220px rgba(23,21,15,.16)}
+
+/* ---------- NAV ---------- */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px var(--pad);transition:background .4s,padding .4s,backdrop-filter .4s;
+  mix-blend-mode:normal;
+}
+.nav.is-scrolled{background:rgba(244,240,231,.82);backdrop-filter:blur(12px);padding:14px var(--pad);border-bottom:1px solid var(--line)}
+.nav.is-dark{color:var(--egg)}
+.nav.is-dark.is-scrolled{background:rgba(23,21,15,.55);border-bottom-color:var(--line-light)}
+.nav__brand{font-weight:900;font-size:22px;letter-spacing:.06em}
+.brand-dot{color:var(--orange)}
+.nav__links{display:flex;gap:30px}
+.nav__links a{font-size:13px;font-weight:600;letter-spacing:.06em;opacity:.85;position:relative;padding:4px 0}
+.nav__links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1.5px;background:var(--orange);transition:width .3s var(--ease)}
+.nav__links a:hover{opacity:1}
+.nav__links a:hover::after{width:100%}
+.nav__order{padding:11px 22px;font-size:13px}
+
+/* ---------- TICKER ---------- */
+.ticker{position:fixed;bottom:0;left:0;right:0;z-index:90;background:var(--ink);color:var(--egg);
+  overflow:hidden;border-top:1px solid var(--line-light);padding:9px 0}
+.ticker__track{display:inline-flex;align-items:center;gap:26px;white-space:nowrap;animation:tick 28s linear infinite;will-change:transform}
+.ticker__track span{font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase}
+.ticker__track i{color:var(--orange);font-style:normal}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* ---------- HERO ---------- */
+.hero{
+  min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;
+  text-align:center;padding:120px var(--pad) 80px;position:relative;
+}
+.hero__tagline{margin-top:30px;font-size:clamp(14px,1.4vw,17px);font-weight:700;
+  letter-spacing:.34em;text-transform:uppercase;color:var(--orange)}
+.mast{line-height:.82;letter-spacing:-.04em}
+.mast .amp{color:var(--orange);font-family:'Fraunces',serif;font-style:italic}
+.mast__line{display:block;font-weight:900;font-size:clamp(72px,20vw,300px)}
+.mast__line--serif{font-family:'Fraunces',serif;font-weight:400;font-style:italic;letter-spacing:-.02em;
+  font-size:clamp(40px,11vw,170px);margin-top:.04em;color:var(--ink-soft)}
+.mast__line--serif em{font-style:italic;color:var(--ink)}
+.hero__lede{max-width:44ch;margin:34px 0 0;font-size:clamp(16px,1.7vw,21px);line-height:1.5;color:var(--ink-soft)}
+.hero__cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:38px;justify-content:center}
+.hero__scroll{position:absolute;left:50%;transform:translateX(-50%);bottom:64px;display:flex;align-items:center;gap:12px;
+  font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.hero__scroll i{width:34px;height:1px;background:rgba(236,69,21,.45);position:relative;overflow:hidden}
+.hero__scroll span{color:var(--orange)}
+.hero__scroll i::after{content:"";position:absolute;inset:0;background:var(--orange);transform:translateX(-100%);animation:scrollline 2.2s var(--ease) infinite}
+@keyframes scrollline{50%{transform:translateX(0)}100%{transform:translateX(100%)}}
+
+/* ---------- section scaffolding ---------- */
+.section-head{padding:0 var(--pad);max-width:var(--maxw);margin:0 auto}
+.section-head--center{text-align:center;display:flex;flex-direction:column;align-items:center}
+
+/* ---------- PLACEHOLDER FRAMES (swap for <img> later) ---------- */
+.ph{position:absolute;inset:0;overflow:hidden;display:flex;align-items:flex-end;
+  background:#2a2622;}
+.ph::after{content:"";position:absolute;inset:0;opacity:.5;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.ph__tag{position:relative;z-index:2;margin:14px;font-size:11px;font-weight:700;letter-spacing:.2em;
+  text-transform:uppercase;color:rgba(255,255,255,.82)}
+.ph__tag--big{font-size:13px;margin:24px;color:rgba(255,255,255,.7)}
+.ph--meat{background:radial-gradient(120% 130% at 28% 18%,#bf4a30,#741f12 58%,#360e08)}
+.ph--sear{background:radial-gradient(120% 130% at 68% 26%,#e0913f,#9a4216 52%,#451608)}
+.ph--char{background:radial-gradient(120% 130% at 40% 24%,#7a4a32,#3c2114 60%,#1c0f08)}
+.ph--bowl{background:radial-gradient(120% 130% at 50% 26%,#9aa861,#566230 58%,#262f17)}
+.ph--sea{background:radial-gradient(120% 130% at 60% 26%,#d98b6e,#9a4a40 55%,#3f1c1c)}
+.ph--cream{background:radial-gradient(120% 130% at 38% 18%,#efe7d6,#cdbd9d 68%,#9d8a6c)}
+.ph--cream .ph__tag{color:rgba(40,30,18,.72)}
+.ph--counter{background:linear-gradient(160deg,#2c2723,#161310)}
+
+/* ---------- THE COUNTER — editorial menu grid (Jacquemus layout) ---------- */
+.counter{padding:clamp(80px,12vh,160px) 0}
+.counter .section-head{margin-bottom:54px}
+
+/* full-bleed rows: 2 big hero, then 4 smaller — tight seams like Jacquemus */
+.menu-hero{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.menu-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:6px}
+
+.m-card{position:relative;display:block;background:#faf7ef;overflow:hidden;cursor:pointer}
+.menu-hero .m-card{aspect-ratio:4/5}
+.menu-grid .m-card{aspect-ratio:4/5}
+/* the product floats centered on a seamless backdrop; two shots swap on hover */
+.m-card__shot{position:absolute;inset:0;display:grid;place-items:center;transition:opacity .55s var(--ease)}
+.m-card__shot--b{opacity:0}
+.m-card:hover .m-card__shot--a{opacity:0}
+.m-card:hover .m-card__shot--b{opacity:1}
+.m-obj{width:62%;height:60%;border-radius:10px;
+  box-shadow:0 44px 80px -40px rgba(23,21,15,.55);transition:transform .6s var(--ease)}
+.menu-grid .m-obj{width:72%;height:56%}
+.m-card:hover .m-obj{transform:scale(1.05) rotate(-1.2deg)}
+.m-obj--meat{background:radial-gradient(120% 130% at 30% 22%,#bf4a30,#741f12 60%,#3a0e08)}
+.m-obj--char{background:radial-gradient(120% 130% at 40% 24%,#7a4a32,#3c2114 60%,#1c0f08)}
+.m-obj--sear{background:radial-gradient(120% 130% at 66% 26%,#e0913f,#9a4216 54%,#451608)}
+.m-obj--bowl{background:radial-gradient(120% 130% at 50% 26%,#9aa861,#566230 58%,#262f17)}
+.m-obj--sea{background:radial-gradient(120% 130% at 60% 26%,#d98b6e,#9a4a40 55%,#3f1c1c)}
+.m-card__tag{position:absolute;z-index:3;top:16px;left:18px;font-size:11px;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.m-card__tag--feature{background:var(--orange);color:#fff;padding:6px 12px;border-radius:999px;letter-spacing:.08em}
+.m-card__meta{position:absolute;z-index:3;left:18px;right:18px;bottom:16px;
+  display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.m-card__meta .name{font-weight:700;font-size:clamp(13px,1.2vw,17px);letter-spacing:-.01em;color:var(--ink)}
+.m-card__meta .price{font-family:'Fraunces',serif;font-style:italic;font-size:16px;color:var(--orange)}
+.counter__cta{display:block;width:max-content;margin:72px auto 0}
+
+/* ---------- CINEMATIC INTRO LOADER ---------- */
+.loader{position:fixed;inset:0;z-index:10000;background:var(--ink);color:var(--egg);
+  display:flex;align-items:center;justify-content:center;
+  /* failsafe: fades itself out even if JS/CDN never runs */
+  animation:loaderFailsafe .9s var(--ease) 4.2s forwards;}
+.loader.is-done{pointer-events:none}
+@keyframes loaderFailsafe{to{opacity:0;visibility:hidden}}
+.loader__inner{display:flex;flex-direction:column;align-items:center;gap:26px;text-align:center}
+.loader__seal{width:116px;height:116px;color:var(--egg)}
+.loader__word{overflow:hidden;padding:0 .04em}
+.loader__word span{display:block;font-weight:900;font-size:clamp(54px,13vw,128px);letter-spacing:-.04em;line-height:.9}
+.loader__bar{width:min(280px,62vw);height:2px;background:rgba(244,240,231,.2);overflow:hidden}
+.loader__bar i{display:block;height:100%;width:0;background:var(--orange)}
+.loader__count{font-size:12px;font-weight:600;letter-spacing:.32em;color:rgba(244,240,231,.6)}
+@media (prefers-reduced-motion:reduce){ .loader{display:none} }
+
+/* ---------- BRAND SEAL (butcher stamp) ---------- */
+.seal{display:block}
+.seal__arc{fill:currentColor;font-family:'Archivo',sans-serif;font-size:12.5px;font-weight:700;letter-spacing:.14em}
+.seal__star{fill:var(--orange);font-size:24px}
+.seal__est{fill:currentColor;font-family:'Archivo',sans-serif;font-size:11px;font-weight:700;letter-spacing:.24em}
+.seal--hero{position:absolute;top:108px;right:var(--pad);width:128px;height:128px;color:var(--ink);
+  animation:sealspin 26s linear infinite;z-index:2}
+@keyframes sealspin{to{transform:rotate(360deg)}}
+.seal--foot{width:150px;height:150px;color:var(--egg);margin:0 auto 44px}
+@media (max-width:760px){ .seal--hero{display:none} }
+
+/* ---------- featured counter item badge ---------- */
+.float-item__badge{position:absolute;z-index:3;top:12px;left:12px;
+  background:var(--orange);color:#fff;font-size:11px;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;padding:7px 12px;border-radius:999px;
+  transform:rotate(-3deg);box-shadow:0 8px 20px -8px rgba(236,69,21,.7)}
+
+/* ---------- LOCATIONS (cinematic) ---------- */
+.locations{position:relative;min-height:130vh;display:flex;flex-direction:column;justify-content:center;
+  padding:140px var(--pad);color:var(--egg);overflow:hidden}
+.locations__bg{position:absolute;inset:-10% 0;z-index:0;will-change:transform}
+.locations__img{position:absolute;inset:0}
+.locations__overlay{position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg,rgba(23,21,15,.55),rgba(23,21,15,.35) 40%,rgba(23,21,15,.78))}
+.locations__intro,.loc-grid{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;width:100%}
+.locations__intro{margin-bottom:70px}
+.loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,40px)}
+.loc-card{border:1px solid var(--line-light);border-radius:6px;padding:clamp(28px,3vw,44px);
+  background:rgba(23,21,15,.28);backdrop-filter:blur(6px);transition:background .4s,transform .5s var(--ease),border-color .4s;
+  display:flex;flex-direction:column;min-height:300px}
+.loc-card:hover{background:rgba(236,69,21,.16);border-color:var(--orange);transform:translateY(-6px)}
+.loc-card__num{font-family:'Fraunces',serif;font-style:italic;font-size:20px;color:var(--orange)}
+.loc-card__name{font-weight:900;font-size:clamp(34px,5vw,64px);letter-spacing:-.03em;line-height:.95;margin:10px 0 16px}
+.loc-card__tag{color:rgba(244,240,231,.78);max-width:34ch;line-height:1.5;font-size:16px;margin-bottom:auto}
+.loc-card__link{margin-top:28px;font-weight:700;letter-spacing:.04em;color:var(--orange)}
+
+/* ---------- ABOUT ---------- */
+.about{padding:clamp(100px,16vh,200px) 0}
+.about__head{padding:0 var(--pad);max-width:var(--maxw);margin:0 auto 70px}
+.about__layout{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad);
+  display:grid;grid-template-columns:0.85fr 1.15fr;gap:clamp(40px,6vw,100px);align-items:start}
+.about__copy p{font-size:clamp(16px,1.4vw,19px);line-height:1.65;color:var(--ink-soft);max-width:50ch;margin-bottom:1.2em}
+.about__facts{list-style:none;margin-top:36px;border-top:1px solid var(--line)}
+.about__facts li{display:flex;justify-content:space-between;align-items:baseline;gap:20px;
+  padding:18px 0;border-bottom:1px solid var(--line)}
+.about__facts b{font-weight:800;font-size:17px}
+.about__facts span{color:var(--muted);font-size:14px;letter-spacing:.02em}
+
+.about__gallery{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:90px;gap:16px}
+.about__gallery .g{position:relative;border-radius:4px;overflow:hidden;will-change:transform;
+  box-shadow:0 24px 50px -30px rgba(23,21,15,.4)}
+.g--tall{grid-column:1/3;grid-row:1/4}
+.g--wide{grid-column:3/7;grid-row:1/3}
+.g--sm{grid-column:3/5;grid-row:3/5}
+.g--sm2{grid-column:5/7;grid-row:3/4}
+.g--med{grid-column:1/3;grid-row:4/6}
+.about__gallery .g:nth-child(4){grid-column:5/7;grid-row:4/6}
+
+/* ---------- REVIEWS + INFO ---------- */
+.reviews{padding:clamp(90px,14vh,180px) var(--pad);background:var(--egg-2)}
+.reviews .section-head{margin-bottom:64px}
+.review-grid{max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.review{background:var(--egg);border:1px solid var(--line);border-radius:6px;padding:34px;
+  display:flex;flex-direction:column;gap:18px;transition:transform .5s var(--ease),box-shadow .5s}
+.review:hover{transform:translateY(-6px);box-shadow:0 30px 60px -36px rgba(23,21,15,.4)}
+.review__stars{color:var(--orange);letter-spacing:.18em;font-size:15px}
+.review blockquote{font-family:'Fraunces',serif;font-size:clamp(18px,1.7vw,22px);line-height:1.4;font-weight:400}
+.review figcaption{color:var(--muted);font-size:13px;letter-spacing:.04em;margin-top:auto}
+
+.info{max-width:var(--maxw);margin:90px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+  border-top:1px solid var(--line);padding-top:60px}
+.info__col h3{font-weight:900;font-size:24px;letter-spacing:-.02em;margin-bottom:14px}
+.info__col p{color:var(--ink-soft);line-height:1.7;font-size:15px;margin-bottom:22px}
+.info__col--note p{color:var(--muted)}
+
+/* ---------- FOOTER ---------- */
+.foot{background:var(--ink);color:var(--egg);padding:clamp(60px,9vw,120px) var(--pad) 80px;text-align:center}
+.foot__mark{font-weight:900;font-size:clamp(64px,22vw,320px);line-height:.8;letter-spacing:-.04em}
+.foot__row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-top:40px;
+  border-top:1px solid var(--line-light);padding-top:28px;font-size:13px;letter-spacing:.08em;
+  text-transform:uppercase;color:rgba(244,240,231,.7)}
+.foot__row a:hover{color:var(--orange)}
+
+/* ---------- reveal init state (JS adds .is-in) ---------- */
+[data-reveal]{opacity:0;transform:translateY(38px)}
+.is-in[data-reveal],[data-reveal].is-in{opacity:1;transform:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:900px){
+  .nav__links{display:none}
+  .menu-grid{grid-template-columns:repeat(2,1fr)}
+  .loc-grid{grid-template-columns:1fr}
+  .about__layout{grid-template-columns:1fr;gap:48px}
+  .about__gallery{grid-auto-rows:70px}
+  .review-grid{grid-template-columns:1fr}
+  .info{grid-template-columns:1fr;gap:36px}
+}
+@media (max-width:560px){
+  .menu-hero{grid-template-columns:1fr}
+  .menu-grid{grid-template-columns:repeat(2,1fr)}
+  .hero__scroll{display:none}
+}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion:reduce){
+  *{animation:none !important;transition:none !important}
+  [data-reveal]{opacity:1;transform:none}
+  .grain{display:none}
+}
+
+</style>
+</head>
+<body>
+
+<!-- ░░░ CINEMATIC INTRO LOADER ░░░ -->
+<div class="loader" id="loader">
+  <div class="loader__inner">
+    <svg class="seal loader__seal" viewBox="0 0 200 200" role="img" aria-label="Papas seal">
+      <defs>
+        <path id="sealTopL" d="M26 100 A74 74 0 0 1 174 100"/>
+        <path id="sealBotL" d="M174 100 A74 74 0 0 1 26 100"/>
+      </defs>
+      <circle cx="100" cy="100" r="94" fill="none" stroke="currentColor" stroke-width="2"/>
+      <circle cx="100" cy="100" r="80" fill="none" stroke="currentColor" stroke-width="1"/>
+      <text class="seal__arc"><textPath href="#sealTopL" startOffset="50%" text-anchor="middle">PAPAS · MEAT &amp; SEAFOOD</textPath></text>
+      <text class="seal__arc"><textPath href="#sealBotL" startOffset="50%" text-anchor="middle">BURBANK · LA CRESCENTA</textPath></text>
+      <text x="100" y="94" text-anchor="middle" class="seal__star">✦</text>
+      <text x="100" y="120" text-anchor="middle" class="seal__est">EST.</text>
+    </svg>
+    <div class="loader__word"><span>PAPAS</span></div>
+    <div class="loader__bar"><i></i></div>
+    <div class="loader__count">00</div>
+  </div>
+</div>
+
+<!-- film grain + vignette overlays -->
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+
+<!-- ░░░ NAV ░░░ -->
+<header class="nav" id="nav">
+  <a href="#hero" class="nav__brand">PAPAS<span class="brand-dot">.</span></a>
+  <nav class="nav__links">
+    <a href="#menu">The Counter</a>
+    <a href="#locations">Locations</a>
+    <a href="#about">About</a>
+    <a href="#reviews">Kind Words</a>
+  </nav>
+  <a href="#order" class="btn btn--order nav__order">Order Now</a>
+</header>
+
+<main>
+
+  <!-- ░░░ PAGE 1 — HERO ░░░ -->
+  <section class="hero" id="hero">
+    <svg class="seal seal--hero" viewBox="0 0 200 200" role="img" aria-label="Papas Meat & Seafood — Burbank & La Crescenta">
+      <defs>
+        <path id="sealTop" d="M26 100 A74 74 0 0 1 174 100"/>
+        <path id="sealBot" d="M174 100 A74 74 0 0 1 26 100"/>
+      </defs>
+      <circle cx="100" cy="100" r="94" fill="none" stroke="currentColor" stroke-width="2"/>
+      <circle cx="100" cy="100" r="80" fill="none" stroke="currentColor" stroke-width="1"/>
+      <text class="seal__arc"><textPath href="#sealTop" startOffset="50%" text-anchor="middle">PAPAS · MEAT &amp; SEAFOOD</textPath></text>
+      <text class="seal__arc"><textPath href="#sealBot" startOffset="50%" text-anchor="middle">BURBANK · LA CRESCENTA</textPath></text>
+      <text x="100" y="94" text-anchor="middle" class="seal__star">✦</text>
+      <text x="100" y="120" text-anchor="middle" class="seal__est">EST.</text>
+    </svg>
+    <h1 class="mast">
+      <span class="mast__line" data-hero-line>PAPAS</span>
+      <span class="mast__line mast__line--serif" data-hero-line><em>Meat</em> <span class="amp">&amp;</span> <em>Seafood</em></span>
+    </h1>
+    <p class="hero__tagline" data-hero>The Italian Butcher Shop</p>
+    <div class="hero__cta" data-hero>
+      <a href="#order" class="btn btn--order btn--lg">Order Now</a>
+      <a href="#menu" class="btn btn--ghost btn--lg">View the Counter</a>
+    </div>
+    <div class="hero__scroll" data-hero><span>Scroll</span><i></i></div>
+  </section>
+
+  <!-- ░░░ PAGE 1.5 — THE COUNTER (editorial menu grid, Jacquemus layout) ░░░ -->
+  <section class="counter" id="menu">
+    <div class="section-head">
+      <span class="kicker" data-reveal>01 — The Counter</span>
+      <h2 class="section-title" data-reveal>The sandwiches,<br><em>up close.</em></h2>
+      <p class="section-sub" data-reveal>Our most-ordered, twice over — then the rest of the lineup. Hover any piece to turn it in the light.</p>
+    </div>
+
+    <!-- TWO big — the most popular sando. Swap each .m-obj for <img src="..."> later. -->
+    <div class="menu-hero">
+      <article class="m-card" data-reveal>
+        <span class="m-card__tag m-card__tag--feature">Most Ordered</span>
+        <div class="m-card__shot m-card__shot--a"><div class="m-obj m-obj--char"></div></div>
+        <div class="m-card__shot m-card__shot--b"><div class="m-obj m-obj--meat"></div></div>
+        <div class="m-card__meta"><span class="name">Pastrami on Rye</span><span class="price">$15</span></div>
+      </article>
+      <article class="m-card" data-reveal>
+        <span class="m-card__tag">Pastrami · ¾ View</span>
+        <div class="m-card__shot m-card__shot--a"><div class="m-obj m-obj--meat"></div></div>
+        <div class="m-card__shot m-card__shot--b"><div class="m-obj m-obj--char"></div></div>
+        <div class="m-card__meta"><span class="name">Pastrami on Rye</span><span class="price">$15</span></div>
+      </article>
+    </div>
+
+    <!-- FOUR smaller — the rest of the lineup -->
+    <div class="menu-grid">
+      <article class="m-card" data-reveal>
+        <span class="m-card__tag">New</span>
+        <div class="m-card__shot m-card__shot--a"><div class="m-obj m-obj--sear"></div></div>
+        <div class="m-card__shot m-card__shot--b"><div class="m-obj m-obj--char"></div></div>
+        <div class="m-card__meta"><span class="name">Tri-Tip</span><span class="price">$14</span></div>
+      </article>
+      <article class="m-card" data-reveal>
+        <span class="m-card__tag">New</span>
+        <div class="m-card__shot m-card__shot--a"><div class="m-obj m-obj--meat"></div></div>
+        <div class="m-card__shot m-card__shot--b"><div class="m-obj m-obj--sear"></div></div>
+        <div class="m-card__meta"><span class="name">The Italian</span><span class="price">$14</span></div>
+      </article>
+      <article class="m-card" data-reveal>
+        <div class="m-card__shot m-card__shot--a"><div class="m-obj m-obj--char"></div></div>
+        <div class="m-card__shot m-card__shot--b"><div class="m-obj m-obj--meat"></div></div>
+        <div class="m-card__meta"><span class="name">Meatball Parm</span><span class="price">$13</span></div>
+      </article>
+      <article class="m-card" data-reveal>
+        <div class="m-card__shot m-card__shot--a"><div class="m-obj m-obj--bowl"></div></div>
+        <div class="m-card__shot m-card__shot--b"><div class="m-obj m-obj--sea"></div></div>
+        <div class="m-card__meta"><span class="name">Chicken Cutlet</span><span class="price">$13</span></div>
+      </article>
+    </div>
+
+    <a href="#order" class="btn btn--order btn--lg counter__cta" data-reveal>Order the Counter</a>
+  </section>
+
+  <!-- ░░░ PAGE 2 — LOCATIONS (cinematic hero of most popular item) ░░░ -->
+  <section class="locations" id="locations">
+    <div class="locations__bg" data-loc-bg>
+      <div class="ph ph--char locations__img"><span class="ph__tag ph__tag--big">Pastrami on Rye — our most-ordered</span></div>
+    </div>
+    <div class="locations__overlay"></div>
+
+    <div class="locations__intro">
+      <span class="kicker kicker--light" data-reveal>02 — Locations</span>
+      <h2 class="section-title section-title--light" data-reveal>Two houses.<br><em>One family.</em></h2>
+    </div>
+
+    <div class="loc-grid">
+      <a class="loc-card" href="burbank.html" data-reveal>
+        <span class="loc-card__num">01</span>
+        <h3 class="loc-card__name">Burbank</h3>
+        <p class="loc-card__tag">The original — food-first &amp; always buzzing. Sandwiches, bowls &amp; cuts off the block.</p>
+        <span class="loc-card__link">Enter Burbank →</span>
+      </a>
+      <a class="loc-card" href="la-crescenta.html" data-reveal>
+        <span class="loc-card__num">02</span>
+        <h3 class="loc-card__name">La&nbsp;Crescenta</h3>
+        <p class="loc-card__tag">Newly open — the neighborhood market &amp; deli. Pantry, snacks, cuts &amp; sandwiches.</p>
+        <span class="loc-card__link">Enter La Crescenta →</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ░░░ PAGE 3 — ABOUT ░░░ -->
+  <section class="about" id="about">
+    <div class="about__head">
+      <span class="kicker" data-reveal>03 — About</span>
+      <h2 class="section-title" data-reveal>A family affair,<br><em>since day one.</em></h2>
+    </div>
+
+    <div class="about__layout">
+      <div class="about__copy" data-reveal>
+        <p>Papas started the way the best things do — at a counter, with a family, and a stubborn belief
+          that meat is worth doing right. Three generations later, we still break it down by hand, still
+          know our regulars by name, still build every sandwich like it's going on the wall.</p>
+        <p>We dress like a butcher and think like a design house: clean lines, honest materials,
+          nothing on the plate that doesn't belong there.</p>
+        <ul class="about__facts">
+          <li><b>Family-run</b><span>three generations deep</span></li>
+          <li><b>Cut by hand</b><span>fresh, never frozen</span></li>
+          <li><b>Two homes</b><span>Burbank &amp; La Crescenta</span></li>
+        </ul>
+      </div>
+
+      <div class="about__gallery">
+        <div class="g g--tall" data-parallax data-speed="0.12"><div class="ph ph--meat"><span class="ph__tag">The block</span></div></div>
+        <div class="g g--wide" data-parallax data-speed="-0.08"><div class="ph ph--counter"><span class="ph__tag">The shop</span></div></div>
+        <div class="g g--sm" data-parallax data-speed="0.16"><div class="ph ph--char"><span class="ph__tag">The team</span></div></div>
+        <div class="g g--sm2" data-parallax data-speed="-0.12"><div class="ph ph--cream"><span class="ph__tag">Family</span></div></div>
+        <div class="g g--med" data-parallax data-speed="0.1"><div class="ph ph--sear"><span class="ph__tag">The craft</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░░ PAGE 4 — REVIEWS + INFO ░░░ -->
+  <section class="reviews" id="reviews">
+    <div class="section-head section-head--center">
+      <span class="kicker" data-reveal>04 — Kind Words</span>
+      <h2 class="section-title" data-reveal>Loved by the<br><em>neighborhood.</em></h2>
+    </div>
+
+    <div class="review-grid">
+      <figure class="review" data-reveal>
+        <div class="review__stars">★★★★★</div>
+        <blockquote>"Best tri-tip sandwich in the valley, full stop. The family treats you like
+          you've been coming for years — because you will be."</blockquote>
+        <figcaption>— Placeholder, Yelp · Burbank</figcaption>
+      </figure>
+      <figure class="review" data-reveal>
+        <div class="review__stars">★★★★★</div>
+        <blockquote>"Found my new neighborhood market. Incredible cuts, kind people, and they
+          remembered my order the second time in. Rare these days."</blockquote>
+        <figcaption>— Placeholder, Yelp · La Crescenta</figcaption>
+      </figure>
+      <figure class="review" data-reveal>
+        <div class="review__stars">★★★★★</div>
+        <blockquote>"You can taste the care. This is what a butcher shop should feel like —
+          old-school heart, modern everything else."</blockquote>
+        <figcaption>— Placeholder, Yelp · Burbank</figcaption>
+      </figure>
+    </div>
+
+    <!-- info / order -->
+    <div class="info" id="order">
+      <div class="info__col" data-reveal>
+        <h3>Burbank</h3>
+        <p>Address line, Burbank, CA<br>Mon–Sat 9–7 · Sun 9–5<br>(818) ___-____</p>
+        <a class="btn btn--order" href="#">Order Burbank</a>
+      </div>
+      <div class="info__col" data-reveal>
+        <h3>La Crescenta</h3>
+        <p>Address line, La Crescenta, CA<br>Mon–Sun 8–8<br>(818) ___-____</p>
+        <a class="btn btn--order" href="#">Order La Crescenta</a>
+      </div>
+      <div class="info__col info__col--note" data-reveal>
+        <h3>Papas</h3>
+        <p>A family butcher &amp; kitchen.<br>Cut to order, made with care,<br>served like it matters.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <svg class="seal seal--foot" viewBox="0 0 200 200" role="img" aria-label="Papas Meat & Seafood seal">
+      <defs>
+        <path id="sealTopF" d="M26 100 A74 74 0 0 1 174 100"/>
+        <path id="sealBotF" d="M174 100 A74 74 0 0 1 26 100"/>
+      </defs>
+      <circle cx="100" cy="100" r="94" fill="none" stroke="currentColor" stroke-width="2"/>
+      <circle cx="100" cy="100" r="80" fill="none" stroke="currentColor" stroke-width="1"/>
+      <text class="seal__arc"><textPath href="#sealTopF" startOffset="50%" text-anchor="middle">PAPAS · MEAT &amp; SEAFOOD</textPath></text>
+      <text class="seal__arc"><textPath href="#sealBotF" startOffset="50%" text-anchor="middle">BURBANK · LA CRESCENTA</textPath></text>
+      <text x="100" y="94" text-anchor="middle" class="seal__star">✦</text>
+      <text x="100" y="120" text-anchor="middle" class="seal__est">EST.</text>
+    </svg>
+    <div class="foot__mark">PAPAS<span class="brand-dot">.</span></div>
+    <div class="foot__row">
+      <span>Meat &amp; Seafood</span>
+      <span>Burbank · La Crescenta, CA</span>
+      <a href="#hero">Back to top ↑</a>
+    </div>
+  </footer>
+
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+<script>
+/* ============================================================
+   PAPAS — motion layer
+   Lenis smooth scroll + GSAP ScrollTrigger
+   Cinematic reveals, parallax, floating menu, nav states
+   ============================================================ */
+(function () {
+  "use strict";
+
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var hasGSAP = typeof window.gsap !== "undefined";
+  var hasST = hasGSAP && typeof window.ScrollTrigger !== "undefined";
+  if (hasST) gsap.registerPlugin(ScrollTrigger);
+
+  /* ---------- 1. Smooth scroll (Lenis) ---------- */
+  var lenis = null;
+  if (!reduce && typeof window.Lenis !== "undefined") {
+    lenis = new Lenis({ lerp: 0.085, wheelMultiplier: 1, smoothWheel: true });
+    window.__lenis = lenis;
+    if (hasST) {
+      lenis.on("scroll", ScrollTrigger.update);
+      gsap.ticker.add(function (t) { lenis.raf(t * 1000); });
+      gsap.ticker.lagSmoothing(0);
+    } else {
+      requestAnimationFrame(function raf(time) { lenis.raf(time); requestAnimationFrame(raf); });
+    }
+  }
+
+  /* ---------- anchor links -> smooth scroll ---------- */
+  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener("click", function (e) {
+      var id = a.getAttribute("href");
+      if (id.length < 2) return;
+      var target = document.querySelector(id);
+      if (!target) return;
+      e.preventDefault();
+      if (lenis) lenis.scrollTo(target, { offset: 0, duration: 1.3 });
+      else target.scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
+    });
+  });
+
+  /* ---------- 2. Nav states ---------- */
+  var nav = document.getElementById("nav");
+  function onScroll() {
+    if (!nav) return;
+    nav.classList.toggle("is-scrolled", window.scrollY > 40);
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  if (hasST) {
+    var dark = document.getElementById("locations");
+    if (dark && nav) {
+      ScrollTrigger.create({
+        trigger: dark, start: "top 70px", end: "bottom 70px",
+        onToggle: function (self) { nav.classList.toggle("is-dark", self.isActive); }
+      });
+    }
+  }
+
+  /* ---------- 3. Intro loader -> hero reveal ---------- */
+  var loader = document.getElementById("loader");
+
+  function heroIntro() {
+    if (hasGSAP && !reduce) {
+      gsap.timeline({ defaults: { ease: "power4.out" } })
+        .from("[data-hero-line]", { yPercent: 115, opacity: 0, duration: 1.1, stagger: 0.12 })
+        .from("[data-hero]", { y: 26, opacity: 0, duration: 0.9, stagger: 0.1 }, "-=0.7");
+    }
+    if (hasST) ScrollTrigger.refresh();
+  }
+
+  function dismissLoader() {
+    if (loader) { loader.classList.add("is-done"); loader.style.display = "none"; }
+    if (lenis) lenis.start();
+    document.body.style.overflow = "";
+  }
+
+  if (loader && hasGSAP && !reduce) {
+    if (lenis) lenis.stop();
+    document.body.style.overflow = "hidden";
+    var countEl = document.querySelector(".loader__count");
+    var counter = { v: 0 };
+    gsap.timeline()
+      .set(loader, { autoAlpha: 1 })
+      .from(".loader__seal", { scale: 0.7, autoAlpha: 0, duration: 0.8, ease: "power3.out" })
+      .from(".loader__word span", { yPercent: 115, duration: 0.9, ease: "power4.out" }, "-=0.4")
+      .to(".loader__bar i", { width: "100%", duration: 1.1, ease: "power2.inOut" }, "-=0.55")
+      .to(counter, { v: 100, duration: 1.1, ease: "power2.inOut",
+        onUpdate: function () { if (countEl) countEl.textContent = String(Math.round(counter.v)).padStart(2, "0"); } }, "<")
+      .to(".loader__inner", { autoAlpha: 0, duration: 0.4, ease: "power2.in" }, "+=0.15")
+      .to(loader, { yPercent: -100, duration: 0.9, ease: "power4.inOut",
+        onComplete: function () { dismissLoader(); heroIntro(); } });
+  } else {
+    if (loader) loader.style.display = "none";
+    heroIntro();
+  }
+
+  // hard safety net: never let the loader trap the page
+  setTimeout(function () { if (loader && loader.style.display !== "none") dismissLoader(); }, 5200);
+
+  /* ---------- 4. Reveal on scroll ---------- */
+  if (hasST && !reduce) {
+    gsap.utils.toArray("[data-reveal]").forEach(function (el) {
+      gsap.to(el, {
+        opacity: 1, y: 0, duration: 1, ease: "power3.out",
+        scrollTrigger: { trigger: el, start: "top 86%" }
+      });
+    });
+  } else {
+    document.querySelectorAll("[data-reveal]").forEach(function (el) { el.classList.add("is-in"); });
+  }
+
+  /* ---------- 5. Locations cinematic background parallax + scale ---------- */
+  if (hasST && !reduce) {
+    var bg = document.querySelector("[data-loc-bg]");
+    if (bg) {
+      gsap.fromTo(bg, { scale: 1.25, yPercent: -6 }, {
+        scale: 1, yPercent: 8, ease: "none",
+        scrollTrigger: { trigger: "#locations", start: "top bottom", end: "bottom top", scrub: true }
+      });
+    }
+  }
+
+  /* ---------- 6. About gallery parallax ---------- */
+  if (hasST && !reduce) {
+    gsap.utils.toArray("[data-parallax]").forEach(function (el) {
+      var speed = parseFloat(el.getAttribute("data-speed")) || 0.1;
+      gsap.fromTo(el, { yPercent: speed * -100 }, {
+        yPercent: speed * 100, ease: "none",
+        scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: true }
+      });
+    });
+  }
+
+  /* ---------- 7. Floating menu — idle float + pointer parallax ---------- */
+  if (hasGSAP && !reduce) {
+    gsap.utils.toArray(".float-item").forEach(function (item, i) {
+      gsap.to(item, {
+        y: "+=14", duration: 2.6 + (i % 3) * 0.5, ease: "sine.inOut",
+        repeat: -1, yoyo: true, delay: i * 0.18
+      });
+    });
+
+    var field = document.getElementById("floatField");
+    if (field) {
+      field.addEventListener("pointermove", function (e) {
+        var r = field.getBoundingClientRect();
+        var cx = (e.clientX - r.left) / r.width - 0.5;
+        var cy = (e.clientY - r.top) / r.height - 0.5;
+        gsap.utils.toArray(".float-item .shot").forEach(function (shot, i) {
+          var depth = ((i % 3) + 1) * 6;
+          gsap.to(shot, { x: cx * depth, y: cy * depth, duration: 0.8, ease: "power2.out", overwrite: "auto" });
+        });
+      });
+      field.addEventListener("pointerleave", function () {
+        gsap.to(".float-item .shot", { x: 0, y: 0, duration: 0.9, ease: "power2.out" });
+      });
+    }
+  }
+
+  /* ---------- 8. refresh after fonts load (avoids trigger drift) ---------- */
+  if (hasST && document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () { ScrollTrigger.refresh(); });
+  }
+})();
+
+</script>
+</body>
+</html>
