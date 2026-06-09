@@ -159,40 +159,6 @@ em{font-style:italic}
 .ph--cream .ph__tag{color:rgba(40,30,18,.72)}
 .ph--counter{background:linear-gradient(160deg,#2c2723,#161310)}
 
-/* ---------- THE COUNTER — editorial menu grid (Jacquemus layout) ---------- */
-.counter{padding:clamp(80px,12vh,160px) 0}
-.counter .section-head{margin-bottom:54px}
-
-/* full-bleed rows: 2 big hero, then 4 smaller — tight seams like Jacquemus */
-.menu-hero{display:grid;grid-template-columns:1fr 1fr;gap:6px}
-.menu-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:6px}
-
-.m-card{position:relative;display:block;background:#faf7ef;overflow:hidden;cursor:pointer}
-.menu-hero .m-card{aspect-ratio:4/5}
-.menu-grid .m-card{aspect-ratio:4/5}
-/* the product floats centered on a seamless backdrop; two shots swap on hover */
-.m-card__shot{position:absolute;inset:0;display:grid;place-items:center;transition:opacity .55s var(--ease)}
-.m-card__shot--b{opacity:0}
-.m-card:hover .m-card__shot--a{opacity:0}
-.m-card:hover .m-card__shot--b{opacity:1}
-.m-obj{width:62%;height:60%;border-radius:10px;
-  box-shadow:0 44px 80px -40px rgba(23,21,15,.55);transition:transform .6s var(--ease)}
-.menu-grid .m-obj{width:72%;height:56%}
-.m-card:hover .m-obj{transform:scale(1.05) rotate(-1.2deg)}
-.m-obj--meat{background:radial-gradient(120% 130% at 30% 22%,#bf4a30,#741f12 60%,#3a0e08)}
-.m-obj--char{background:radial-gradient(120% 130% at 40% 24%,#7a4a32,#3c2114 60%,#1c0f08)}
-.m-obj--sear{background:radial-gradient(120% 130% at 66% 26%,#e0913f,#9a4216 54%,#451608)}
-.m-obj--bowl{background:radial-gradient(120% 130% at 50% 26%,#9aa861,#566230 58%,#262f17)}
-.m-obj--sea{background:radial-gradient(120% 130% at 60% 26%,#d98b6e,#9a4a40 55%,#3f1c1c)}
-.m-card__tag{position:absolute;z-index:3;top:16px;left:18px;font-size:11px;font-weight:700;
-  letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
-.m-card__tag--feature{background:var(--orange);color:#fff;padding:6px 12px;border-radius:999px;letter-spacing:.08em}
-.m-card__meta{position:absolute;z-index:3;left:18px;right:18px;bottom:16px;
-  display:flex;align-items:baseline;justify-content:space-between;gap:12px}
-.m-card__meta .name{font-weight:700;font-size:clamp(13px,1.2vw,17px);letter-spacing:-.01em;color:var(--ink)}
-.m-card__meta .price{font-family:'Fraunces',serif;font-style:italic;font-size:16px;color:var(--orange)}
-.counter__cta{display:block;width:max-content;margin:72px auto 0}
-
 /* ---------- CINEMATIC INTRO LOADER ---------- */
 .loader{position:fixed;inset:0;z-index:10000;background:var(--ink);color:var(--egg);
   display:flex;align-items:center;justify-content:center;
@@ -299,7 +265,6 @@ em{font-style:italic}
 /* ---------- responsive ---------- */
 @media (max-width:900px){
   .nav__links{display:none}
-  .menu-grid{grid-template-columns:repeat(2,1fr)}
   .loc-grid{grid-template-columns:1fr}
   .about__layout{grid-template-columns:1fr;gap:48px}
   .about__gallery{grid-auto-rows:70px}
@@ -307,8 +272,6 @@ em{font-style:italic}
   .info{grid-template-columns:1fr;gap:36px}
 }
 @media (max-width:560px){
-  .menu-hero{grid-template-columns:1fr}
-  .menu-grid{grid-template-columns:repeat(2,1fr)}
   .hero__scroll{display:none}
 }
 
@@ -352,7 +315,6 @@ em{font-style:italic}
 <header class="nav" id="nav">
   <a href="#hero" class="nav__brand">PAPAS<span class="brand-dot">.</span></a>
   <nav class="nav__links">
-    <a href="#menu">The Counter</a>
     <a href="#locations">Locations</a>
     <a href="#about">About</a>
     <a href="#reviews">Kind Words</a>
@@ -383,62 +345,8 @@ em{font-style:italic}
     <p class="hero__tagline" data-hero>The Italian Butcher Shop</p>
     <div class="hero__cta" data-hero>
       <a href="#order" class="btn btn--order btn--lg">Order Now</a>
-      <a href="#menu" class="btn btn--ghost btn--lg">View the Counter</a>
     </div>
     <div class="hero__scroll" data-hero><span>Scroll</span><i></i></div>
-  </section>
-
-  <!-- ░░░ PAGE 1.5 — THE COUNTER (editorial menu grid, Jacquemus layout) ░░░ -->
-  <section class="counter" id="menu">
-    <div class="section-head">
-      <span class="kicker" data-reveal>01 — The Counter</span>
-      <h2 class="section-title" data-reveal>The sandwiches,<br><em>up close.</em></h2>
-      <p class="section-sub" data-reveal>Our most-ordered, twice over — then the rest of the lineup. Hover any piece to turn it in the light.</p>
-    </div>
-
-    <!-- TWO big — the most popular sando. Swap each .m-obj for <img src="..."> later. -->
-    <div class="menu-hero">
-      <article class="m-card" data-reveal>
-        <span class="m-card__tag m-card__tag--feature">Most Ordered</span>
-        <div class="m-card__shot m-card__shot--a"><div class="m-obj m-obj--char"></div></div>
-        <div class="m-card__shot m-card__shot--b"><div class="m-obj m-obj--meat"></div></div>
-        <div class="m-card__meta"><span class="name">Pastrami on Rye</span><span class="price">$15</span></div>
-      </article>
-      <article class="m-card" data-reveal>
-        <span class="m-card__tag">Pastrami · ¾ View</span>
-        <div class="m-card__shot m-card__shot--a"><div class="m-obj m-obj--meat"></div></div>
-        <div class="m-card__shot m-card__shot--b"><div class="m-obj m-obj--char"></div></div>
-        <div class="m-card__meta"><span class="name">Pastrami on Rye</span><span class="price">$15</span></div>
-      </article>
-    </div>
-
-    <!-- FOUR smaller — the rest of the lineup -->
-    <div class="menu-grid">
-      <article class="m-card" data-reveal>
-        <span class="m-card__tag">New</span>
-        <div class="m-card__shot m-card__shot--a"><div class="m-obj m-obj--sear"></div></div>
-        <div class="m-card__shot m-card__shot--b"><div class="m-obj m-obj--char"></div></div>
-        <div class="m-card__meta"><span class="name">Tri-Tip</span><span class="price">$14</span></div>
-      </article>
-      <article class="m-card" data-reveal>
-        <span class="m-card__tag">New</span>
-        <div class="m-card__shot m-card__shot--a"><div class="m-obj m-obj--meat"></div></div>
-        <div class="m-card__shot m-card__shot--b"><div class="m-obj m-obj--sear"></div></div>
-        <div class="m-card__meta"><span class="name">The Italian</span><span class="price">$14</span></div>
-      </article>
-      <article class="m-card" data-reveal>
-        <div class="m-card__shot m-card__shot--a"><div class="m-obj m-obj--char"></div></div>
-        <div class="m-card__shot m-card__shot--b"><div class="m-obj m-obj--meat"></div></div>
-        <div class="m-card__meta"><span class="name">Meatball Parm</span><span class="price">$13</span></div>
-      </article>
-      <article class="m-card" data-reveal>
-        <div class="m-card__shot m-card__shot--a"><div class="m-obj m-obj--bowl"></div></div>
-        <div class="m-card__shot m-card__shot--b"><div class="m-obj m-obj--sea"></div></div>
-        <div class="m-card__meta"><span class="name">Chicken Cutlet</span><span class="price">$13</span></div>
-      </article>
-    </div>
-
-    <a href="#order" class="btn btn--order btn--lg counter__cta" data-reveal>Order the Counter</a>
   </section>
 
   <!-- ░░░ PAGE 2 — LOCATIONS (cinematic hero of most popular item) ░░░ -->
