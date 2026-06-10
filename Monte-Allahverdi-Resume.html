@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monte Allahverdi — Resume</title>
+<style>
+  :root{
+    --ink:#1a1a1a;
+    --muted:#555;
+    --accent:#0b2545;      /* deep navy */
+    --accent-2:#13315c;
+    --rule:#d8dee9;
+    --bg:#ffffff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{background:#eef1f5;}
+  body{
+    font-family:"Calibri","Segoe UI",Arial,Helvetica,sans-serif;
+    color:var(--ink);
+    line-height:1.4;
+    font-size:11pt;
+    -webkit-print-color-adjust:exact;
+    print-color-adjust:exact;
+  }
+  .page{
+    max-width:8.5in;
+    margin:24px auto;
+    background:var(--bg);
+    padding:0.55in 0.6in;
+    box-shadow:0 6px 28px rgba(0,0,0,.12);
+  }
+
+  /* Header */
+  header{border-bottom:3px solid var(--accent);padding-bottom:12px;margin-bottom:14px;}
+  h1{
+    font-size:30pt;
+    letter-spacing:1px;
+    color:var(--accent);
+    font-weight:700;
+    line-height:1;
+  }
+  .title{
+    font-size:11.5pt;
+    color:var(--accent-2);
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    margin-top:6px;
+  }
+  .contact{
+    margin-top:9px;
+    font-size:10pt;
+    color:var(--muted);
+  }
+  .contact span{white-space:nowrap;}
+  .contact .sep{color:var(--rule);margin:0 8px;}
+
+  /* Sections */
+  section{margin-top:15px;}
+  h2{
+    font-size:11.5pt;
+    color:var(--accent);
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+    border-bottom:1.5px solid var(--rule);
+    padding-bottom:3px;
+    margin-bottom:8px;
+  }
+  .summary{font-size:10.5pt;color:#2b2b2b;}
+
+  /* Experience entries */
+  .entry{margin-bottom:11px;}
+  .entry:last-child{margin-bottom:0;}
+  .entry-head{display:flex;justify-content:space-between;align-items:baseline;}
+  .role{font-weight:700;font-size:10.8pt;color:var(--ink);}
+  .company{font-weight:600;color:var(--accent-2);}
+  .meta{font-size:9.5pt;color:var(--muted);font-style:italic;white-space:nowrap;padding-left:12px;}
+  ul{list-style:none;margin-top:4px;}
+  ul li{position:relative;padding-left:14px;margin-bottom:3px;font-size:10.3pt;}
+  ul li::before{
+    content:"";
+    position:absolute;left:2px;top:6px;
+    width:5px;height:5px;border-radius:50%;
+    background:var(--accent);
+  }
+
+  /* Two-column skill + activities helpers */
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:6px 26px;}
+  .skills-list{display:grid;grid-template-columns:1fr 1fr;gap:2px 26px;}
+  .skills-list li{font-size:10.3pt;}
+
+  .edu-line{display:flex;justify-content:space-between;align-items:baseline;}
+  .edu-line .role{font-size:10.6pt;}
+
+  .note{
+    background:#fff8e6;border:1px dashed #e3c34a;color:#7a5b00;
+    font-size:9pt;padding:8px 12px;border-radius:5px;margin:18px auto 0;
+    max-width:8.5in;
+  }
+  @media print{
+    html,body{background:#fff;}
+    .page{box-shadow:none;margin:0;max-width:100%;padding:0.45in 0.5in;}
+    .note{display:none;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <h1>MONTE ALLAHVERDI</h1>
+    <div class="title">Aspiring Attorney &nbsp;•&nbsp; Sales &amp; Client Relations</div>
+    <div class="contact">
+      <span>Glendale, CA</span><span class="sep">|</span>
+      <span>(818)&nbsp;913-0567</span><span class="sep">|</span>
+      <span>Monte2008a@gmail.com</span><span class="sep">|</span>
+      <span>LinkedIn:&nbsp;[add&nbsp;URL]</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>Professional Summary</h2>
+    <p class="summary">
+      Driven and personable 2026 high school graduate with three years of real-world experience in
+      sales, marketing, and client management — including independently negotiating and closing
+      <strong>$100K B2B contracts</strong>. Known for staying composed under pressure, making
+      decisive calls, and building lasting client relationships. Seeking an office position at a law
+      firm to learn the practice of law firsthand while contributing strong communication,
+      negotiation, and organizational skills. Long-term goal: corporate attorney and firm owner.
+    </p>
+  </section>
+
+  <section>
+    <h2>Experience</h2>
+
+    <div class="entry">
+      <div class="entry-head">
+        <div><span class="role">Sales &amp; Marketing Lead</span> — <span class="company">[Allahverdi Aerospace Engineering — confirm name]</span></div>
+        <div class="meta">Glendale, CA &nbsp;•&nbsp; 2023 – Present</div>
+      </div>
+      <ul>
+        <li>Led sales, marketing, and client relations for an aerospace engineering firm, serving as the primary point of contact for prospective and existing clients.</li>
+        <li>Negotiated and closed B2B contracts valued up to <strong>$100,000</strong>, building new client relationships through outreach, calls, and email.</li>
+        <li>Independently rescued a stalled six-month deal: stepped in when leadership was unavailable, re-engaged a client ready to walk away, and negotiated a <strong>$100K, five-month contract</strong> to close.</li>
+        <li>Managed the full client cycle — proposals, communications, order fulfillment, and shipping — ensuring projects were delivered on time.</li>
+        <li>Developed marketing outreach that expanded the company's client pipeline.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <div><span class="role">Co-Founder</span> — <span class="company">[Agency Name] — Marketing &amp; AI Automation</span></div>
+        <div class="meta">2025 – Present</div>
+      </div>
+      <ul>
+        <li>Co-founded a marketing and AI-automation agency, handling client acquisition and project delivery.</li>
+        <li>Designed and animated custom 3D websites and built AI-driven automation workflows for clients.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <div><span class="role">STEM Camp Counselor &amp; Instructor</span> — <span class="company">[Organization Name]</span></div>
+        <div class="meta">2022 – 2023</div>
+      </div>
+      <ul>
+        <li>Hosted STEM-themed birthday events and summer camps, leading groups of children through hands-on activities.</li>
+        <li>Managed scheduling, safety, and parent communication in a fast-paced, people-facing environment.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Leadership &amp; Community Involvement</h2>
+    <ul>
+      <li><strong>Varsity Soccer Captain (4 years)</strong> — led and motivated the team through full high school career, demonstrating discipline, accountability, and consistency.</li>
+      <li><strong>Founder</strong> — launched own marketing/AI agency from the ground up with a partner.</li>
+      <li><strong>Community Service</strong> — volunteered at Verdugo Woodlands Elementary School events and Montrose Oktoberfest community events.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Core Skills</h2>
+    <ul class="skills-list">
+      <li>Client Relations &amp; Account Management</li>
+      <li>Sales &amp; Contract Negotiation</li>
+      <li>Marketing &amp; Outreach Strategy</li>
+      <li>Decision-Making Under Pressure</li>
+      <li>Professional Communication (calls &amp; email)</li>
+      <li>Organization &amp; Project Follow-Through</li>
+      <li>Microsoft Office / Email &amp; Calendar Mgmt</li>
+      <li>Web Development &amp; 3D Animation</li>
+      <li>Workflow Automation &amp; AI Tools</li>
+      <li>Team Leadership</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Education</h2>
+    <div class="entry">
+      <div class="edu-line">
+        <div><span class="role">[High School Name]</span> — Glendale, CA</div>
+        <div class="meta">Expected Graduation 2026</div>
+      </div>
+      <ul>
+        <li>GPA: <strong>3.5</strong> &nbsp;|&nbsp; Completed numerous college-level (dual-enrollment) courses during high school.</li>
+        <li>Coursework emphasis in Marketing and Sales.</li>
+        <li>Intended path: Pre-Law studies with the goal of attending <strong>UCLA</strong> and law school.</li>
+      </ul>
+    </div>
+  </section>
+
+</div>
+
+<div class="note">
+  ⚠️ Placeholders to fill before sending: <strong>LinkedIn URL</strong>, <strong>your father's company name</strong>,
+  <strong>your agency's name</strong>, the <strong>STEM organization's name</strong>, and your
+  <strong>high school's name</strong>. (This yellow note will not appear when printed/saved to PDF.)
+</div>
+
+</body>
+</html>
