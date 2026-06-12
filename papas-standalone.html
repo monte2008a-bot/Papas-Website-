@@ -184,6 +184,7 @@ em{font-style:italic}
 .m-obj--sear{background:radial-gradient(120% 130% at 66% 26%,#e0913f,#9a4216 54%,#451608)}
 .m-obj--bowl{background:radial-gradient(120% 130% at 50% 26%,#9aa861,#566230 58%,#262f17)}
 .m-obj--sea{background:radial-gradient(120% 130% at 60% 26%,#d98b6e,#9a4a40 55%,#3f1c1c)}
+.m-obj--cream{background:radial-gradient(120% 130% at 38% 18%,#efe7d6,#cdbd9d 68%,#9d8a6c)}
 .m-card__tag{position:absolute;z-index:3;top:16px;left:18px;font-size:11px;font-weight:700;
   letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
 .m-card__tag--feature{background:var(--orange);color:#fff;padding:6px 12px;border-radius:999px;letter-spacing:.08em}
@@ -353,6 +354,7 @@ em{font-style:italic}
   <a href="#hero" class="nav__brand">PAPAS<span class="brand-dot">.</span></a>
   <nav class="nav__links">
     <a href="#menu">The Counter</a>
+    <a href="#bowls">The Bowls</a>
     <a href="#locations">Locations</a>
     <a href="#about">About</a>
     <a href="#reviews">Kind Words</a>
@@ -441,6 +443,59 @@ em{font-style:italic}
     <a href="#order" class="btn btn--order btn--lg counter__cta" data-reveal>Order the Counter</a>
   </section>
 
+  <!-- ░░░ PAGE 1.6 — THE BOWLS (editorial grid, twin of The Counter) ░░░ -->
+  <section class="counter" id="bowls">
+    <div class="section-head">
+      <span class="kicker" data-reveal>02 — The Bowls</span>
+      <h2 class="section-title" data-reveal>The bowls,<br><em>brimming over.</em></h2>
+      <p class="section-sub" data-reveal>Cut off the block, piled high over rice or greens. The crowd favorite twice over — then the rest of the lineup. Hover any piece to turn it in the light.</p>
+    </div>
+
+    <!-- TWO big — the most popular bowl. Swap each .m-obj for <img src="..."> later. -->
+    <div class="menu-hero">
+      <article class="m-card" data-reveal>
+        <span class="m-card__tag m-card__tag--feature">Most Ordered</span>
+        <div class="m-card__shot m-card__shot--a"><div class="m-obj m-obj--sear"></div></div>
+        <div class="m-card__shot m-card__shot--b"><div class="m-obj m-obj--bowl"></div></div>
+        <div class="m-card__meta"><span class="name">Tri-Tip Rice Bowl</span><span class="price">$15</span></div>
+      </article>
+      <article class="m-card" data-reveal>
+        <span class="m-card__tag">Tri-Tip · ¾ View</span>
+        <div class="m-card__shot m-card__shot--a"><div class="m-obj m-obj--bowl"></div></div>
+        <div class="m-card__shot m-card__shot--b"><div class="m-obj m-obj--sear"></div></div>
+        <div class="m-card__meta"><span class="name">Tri-Tip Rice Bowl</span><span class="price">$15</span></div>
+      </article>
+    </div>
+
+    <!-- FOUR smaller — the rest of the lineup -->
+    <div class="menu-grid">
+      <article class="m-card" data-reveal>
+        <span class="m-card__tag">New</span>
+        <div class="m-card__shot m-card__shot--a"><div class="m-obj m-obj--sea"></div></div>
+        <div class="m-card__shot m-card__shot--b"><div class="m-obj m-obj--bowl"></div></div>
+        <div class="m-card__meta"><span class="name">Salmon Poke Bowl</span><span class="price">$16</span></div>
+      </article>
+      <article class="m-card" data-reveal>
+        <div class="m-card__shot m-card__shot--a"><div class="m-obj m-obj--char"></div></div>
+        <div class="m-card__shot m-card__shot--b"><div class="m-obj m-obj--meat"></div></div>
+        <div class="m-card__meta"><span class="name">Carne Asada Bowl</span><span class="price">$14</span></div>
+      </article>
+      <article class="m-card" data-reveal>
+        <div class="m-card__shot m-card__shot--a"><div class="m-obj m-obj--bowl"></div></div>
+        <div class="m-card__shot m-card__shot--b"><div class="m-obj m-obj--sear"></div></div>
+        <div class="m-card__meta"><span class="name">Chicken Pesto Bowl</span><span class="price">$14</span></div>
+      </article>
+      <article class="m-card" data-reveal>
+        <span class="m-card__tag">Veg</span>
+        <div class="m-card__shot m-card__shot--a"><div class="m-obj m-obj--bowl"></div></div>
+        <div class="m-card__shot m-card__shot--b"><div class="m-obj m-obj--cream"></div></div>
+        <div class="m-card__meta"><span class="name">Mediterranean Bowl</span><span class="price">$13</span></div>
+      </article>
+    </div>
+
+    <a href="#order" class="btn btn--order btn--lg counter__cta" data-reveal>Order the Bowls</a>
+  </section>
+
   <!-- ░░░ PAGE 2 — LOCATIONS (cinematic hero of most popular item) ░░░ -->
   <section class="locations" id="locations">
     <div class="locations__bg" data-loc-bg>
@@ -449,7 +504,7 @@ em{font-style:italic}
     <div class="locations__overlay"></div>
 
     <div class="locations__intro">
-      <span class="kicker kicker--light" data-reveal>02 — Locations</span>
+      <span class="kicker kicker--light" data-reveal>03 — Locations</span>
       <h2 class="section-title section-title--light" data-reveal>Two houses.<br><em>One family.</em></h2>
     </div>
 
@@ -472,7 +527,7 @@ em{font-style:italic}
   <!-- ░░░ PAGE 3 — ABOUT ░░░ -->
   <section class="about" id="about">
     <div class="about__head">
-      <span class="kicker" data-reveal>03 — About</span>
+      <span class="kicker" data-reveal>04 — About</span>
       <h2 class="section-title" data-reveal>A family affair,<br><em>since day one.</em></h2>
     </div>
 
@@ -503,7 +558,7 @@ em{font-style:italic}
   <!-- ░░░ PAGE 4 — REVIEWS + INFO ░░░ -->
   <section class="reviews" id="reviews">
     <div class="section-head section-head--center">
-      <span class="kicker" data-reveal>04 — Kind Words</span>
+      <span class="kicker" data-reveal>05 — Kind Words</span>
       <h2 class="section-title" data-reveal>Loved by the<br><em>neighborhood.</em></h2>
     </div>
 
