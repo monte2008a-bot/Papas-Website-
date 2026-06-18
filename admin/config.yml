@@ -1,0 +1,197 @@
+backend:
+  name: github
+  repo: monte2008a-bot/Papas-Website-
+  branch: main
+  # --- OAuth login via the sveltia-cms-auth Cloudflare Worker. ---
+  # Replace the line below with your deployed worker URL, e.g.
+  #   base_url: https://sveltia-cms-auth.your-subdomain.workers.dev
+  # Until this points at a real worker, "Login with GitHub" will not work.
+  # See SETUP-CMS.md for the one-time worker + GitHub OAuth App setup.
+  base_url: https://REPLACE-WITH-YOUR-WORKER.workers.dev
+
+# Where uploaded images are stored / referenced. Not used by the current
+# placeholder content, but ready for when real photos are added.
+media_folder: "images/uploads"
+public_folder: "images/uploads"
+
+# Commit straight to the published branch (simplest for a single editor).
+# Switch to an editorial workflow later if review-before-publish is wanted.
+publish_mode: simple
+
+# Sveltia/Decap show a slug-based message; keep commits readable.
+site_url: https://monte2008a-bot.github.io/Papas-Website-/
+
+collections:
+  - name: content
+    label: "Site Content"
+    label_singular: "Section"
+    description: "Edit the text, menu items, prices, locations, reviews and hours that appear on the homepage."
+    delete: false
+    editor:
+      preview: false
+    files:
+      # ---------------------------------------------------------------
+      - name: hero
+        label: "Hero (top of page)"
+        file: "content/hero.json"
+        fields:
+          - { name: tagline, label: "Tagline", widget: string }
+          - name: cta_primary
+            label: "Primary button"
+            widget: object
+            fields:
+              - { name: label, label: "Button text", widget: string }
+              - { name: href, label: "Link (e.g. #order or a URL)", widget: string }
+          - name: cta_secondary
+            label: "Secondary button"
+            widget: object
+            fields:
+              - { name: label, label: "Button text", widget: string }
+              - { name: href, label: "Link (e.g. #menu or a URL)", widget: string }
+
+      # ---------------------------------------------------------------
+      - name: counter
+        label: "The Counter (sandwiches)"
+        file: "content/counter.json"
+        fields:
+          - { name: kicker, label: "Eyebrow label", widget: string }
+          - { name: title_line1, label: "Heading line 1", widget: string }
+          - { name: title_line2, label: "Heading line 2 (italic)", widget: string }
+          - { name: subtitle, label: "Subtitle", widget: text }
+          - { name: cta, label: "Button text", widget: string }
+          - name: hero_items
+            label: "Featured (large) items"
+            label_singular: "Item"
+            widget: list
+            fields:
+              - { name: name, label: "Name", widget: string }
+              - { name: price, label: "Price", widget: string }
+              - { name: tag, label: "Tag (small label)", widget: string, required: false }
+              - { name: feature, label: "Highlight tag (orange)", widget: boolean, default: false }
+              - { name: style_a, label: "Front image style", widget: select, options: [char, meat, sear, bowl, sea, cream], default: char }
+              - { name: style_b, label: "Hover image style", widget: select, options: [char, meat, sear, bowl, sea, cream], default: meat }
+          - name: grid_items
+            label: "Lineup (small) items"
+            label_singular: "Item"
+            widget: list
+            fields:
+              - { name: name, label: "Name", widget: string }
+              - { name: price, label: "Price", widget: string }
+              - { name: tag, label: "Tag (small label)", widget: string, required: false }
+              - { name: style_a, label: "Front image style", widget: select, options: [char, meat, sear, bowl, sea, cream], default: char }
+              - { name: style_b, label: "Hover image style", widget: select, options: [char, meat, sear, bowl, sea, cream], default: meat }
+
+      # ---------------------------------------------------------------
+      - name: bowls
+        label: "The Bowls"
+        file: "content/bowls.json"
+        fields:
+          - { name: kicker, label: "Eyebrow label", widget: string }
+          - { name: title_line1, label: "Heading line 1", widget: string }
+          - { name: title_line2, label: "Heading line 2 (italic)", widget: string }
+          - { name: subtitle, label: "Subtitle", widget: text }
+          - { name: cta, label: "Button text", widget: string }
+          - name: hero_items
+            label: "Featured (large) items"
+            label_singular: "Item"
+            widget: list
+            fields:
+              - { name: name, label: "Name", widget: string }
+              - { name: price, label: "Price", widget: string }
+              - { name: tag, label: "Tag (small label)", widget: string, required: false }
+              - { name: feature, label: "Highlight tag (orange)", widget: boolean, default: false }
+              - { name: style_a, label: "Front image style", widget: select, options: [char, meat, sear, bowl, sea, cream], default: sear }
+              - { name: style_b, label: "Hover image style", widget: select, options: [char, meat, sear, bowl, sea, cream], default: bowl }
+          - name: grid_items
+            label: "Lineup (small) items"
+            label_singular: "Item"
+            widget: list
+            fields:
+              - { name: name, label: "Name", widget: string }
+              - { name: price, label: "Price", widget: string }
+              - { name: tag, label: "Tag (small label)", widget: string, required: false }
+              - { name: style_a, label: "Front image style", widget: select, options: [char, meat, sear, bowl, sea, cream], default: char }
+              - { name: style_b, label: "Hover image style", widget: select, options: [char, meat, sear, bowl, sea, cream], default: meat }
+
+      # ---------------------------------------------------------------
+      - name: locations
+        label: "Locations"
+        file: "content/locations.json"
+        fields:
+          - { name: kicker, label: "Eyebrow label", widget: string }
+          - { name: title_line1, label: "Heading line 1", widget: string }
+          - { name: title_line2, label: "Heading line 2 (italic)", widget: string }
+          - { name: bg_tag, label: "Background image caption", widget: string }
+          - name: cards
+            label: "Location cards"
+            label_singular: "Location"
+            widget: list
+            fields:
+              - { name: num, label: "Number (e.g. 01)", widget: string }
+              - { name: name, label: "Name", widget: string }
+              - { name: tag, label: "Description", widget: text }
+              - { name: link_label, label: "Link text", widget: string }
+              - { name: href, label: "Link target (e.g. burbank.html)", widget: string }
+
+      # ---------------------------------------------------------------
+      - name: about
+        label: "About"
+        file: "content/about.json"
+        fields:
+          - { name: kicker, label: "Eyebrow label", widget: string }
+          - { name: title_line1, label: "Heading line 1", widget: string }
+          - { name: title_line2, label: "Heading line 2 (italic)", widget: string }
+          - name: paragraphs
+            label: "Paragraphs"
+            label_singular: "Paragraph"
+            widget: list
+            field: { name: text, label: "Paragraph", widget: text }
+          - name: facts
+            label: "Facts"
+            label_singular: "Fact"
+            widget: list
+            fields:
+              - { name: label, label: "Headline", widget: string }
+              - { name: detail, label: "Detail", widget: string }
+
+      # ---------------------------------------------------------------
+      - name: reviews
+        label: "Reviews"
+        file: "content/reviews.json"
+        fields:
+          - { name: kicker, label: "Eyebrow label", widget: string }
+          - { name: title_line1, label: "Heading line 1", widget: string }
+          - { name: title_line2, label: "Heading line 2 (italic)", widget: string }
+          - name: items
+            label: "Reviews"
+            label_singular: "Review"
+            widget: list
+            fields:
+              - { name: stars, label: "Stars (1-5)", widget: number, value_type: int, min: 1, max: 5, default: 5 }
+              - { name: quote, label: "Quote", widget: text }
+              - { name: source, label: "Attribution", widget: string }
+
+      # ---------------------------------------------------------------
+      - name: info
+        label: "Hours & Contact"
+        file: "content/info.json"
+        fields:
+          - name: columns
+            label: "Info columns"
+            label_singular: "Column"
+            widget: list
+            fields:
+              - { name: title, label: "Heading", widget: string }
+              - name: lines
+                label: "Lines (address, hours, phone…)"
+                label_singular: "Line"
+                widget: list
+                field: { name: text, label: "Line", widget: string }
+              - { name: note, label: "This is a note column (no order button)", widget: boolean, default: false }
+              - name: cta
+                label: "Order button"
+                widget: object
+                required: false
+                fields:
+                  - { name: label, label: "Button text", widget: string }
+                  - { name: href, label: "Link", widget: string }

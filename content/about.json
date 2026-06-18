@@ -1,0 +1,14 @@
+{
+  "kicker": "04 — About",
+  "title_line1": "A family affair,",
+  "title_line2": "since day one.",
+  "paragraphs": [
+    "Papas started the way the best things do — at a counter, with a family, and a stubborn belief that meat is worth doing right. Three generations later, we still break it down by hand, still know our regulars by name, still build every sandwich like it's going on the wall.",
+    "We dress like a butcher and think like a design house: clean lines, honest materials, nothing on the plate that doesn't belong there."
+  ],
+  "facts": [
+    { "label": "Family-run", "detail": "three generations deep" },
+    { "label": "Cut by hand", "detail": "fresh, never frozen" },
+    { "label": "Two homes", "detail": "Burbank & La Crescenta" }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "kicker": "03 — Locations",
+  "title_line1": "Two houses.",
+  "title_line2": "One family.",
+  "bg_tag": "Pastrami on Rye — our most-ordered",
+  "cards": [
+    {
+      "num": "01",
+      "name": "Burbank",
+      "tag": "The original — food-first & always buzzing. Sandwiches, bowls & cuts off the block.",
+      "link_label": "Enter Burbank →",
+      "href": "burbank.html"
+    },
+    {
+      "num": "02",
+      "name": "La Crescenta",
+      "tag": "Newly open — the neighborhood market & deli. Pantry, snacks, cuts & sandwiches.",
+      "link_label": "Enter La Crescenta →",
+      "href": "la-crescenta.html"
+    }
+  ]
+}

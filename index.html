@@ -634,7 +634,7 @@ em{font-style:italic}
    Lenis smooth scroll + GSAP ScrollTrigger
    Cinematic reveals, parallax, floating menu, nav states
    ============================================================ */
-(function () {
+window.__initMotion = function () {
   "use strict";
 
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -793,6 +793,172 @@ em{font-style:italic}
   if (hasST && document.fonts && document.fonts.ready) {
     document.fonts.ready.then(function () { ScrollTrigger.refresh(); });
   }
+};
+
+/* ============================================================
+   PAPAS — content layer
+   Editable copy lives in /content/*.json (managed via /admin,
+   Sveltia CMS). We fetch it, rebuild the dynamic sections, then
+   start the motion layer. The markup already in the page is the
+   built-in fallback: if a fetch ever fails, the site still renders.
+   ============================================================ */
+(function () {
+  "use strict";
+
+  function esc(s) {
+    return String(s == null ? "" : s)
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  }
+
+  function getJSON(path) {
+    return fetch(path, { cache: "no-cache" }).then(function (r) {
+      if (!r.ok) throw new Error(path + " -> " + r.status);
+      return r.json();
+    });
+  }
+
+  /* ---- shared builders ---- */
+  function titleHTML(d, lightClass) {
+    var cls = "section-title" + (lightClass ? " " + lightClass : "");
+    return '<h2 class="' + cls + '" data-reveal>' +
+      esc(d.title_line1) + "<br><em>" + esc(d.title_line2) + "</em></h2>";
+  }
+
+  function menuCard(it) {
+    var tag = it && it.tag
+      ? '<span class="m-card__tag' + (it.feature ? " m-card__tag--feature" : "") + '">' + esc(it.tag) + "</span>"
+      : "";
+    return '<article class="m-card" data-reveal>' + tag +
+      '<div class="m-card__shot m-card__shot--a"><div class="m-obj m-obj--' + esc(it.style_a || "meat") + '"></div></div>' +
+      '<div class="m-card__shot m-card__shot--b"><div class="m-obj m-obj--' + esc(it.style_b || "char") + '"></div></div>' +
+      '<div class="m-card__meta"><span class="name">' + esc(it.name) + '</span><span class="price">' + esc(it.price) + "</span></div>" +
+      "</article>";
+  }
+
+  /* ---- per-section renderers ---- */
+  function renderHero(d) {
+    var sec = document.getElementById("hero");
+    if (!sec || !d) return;
+    var tagline = sec.querySelector(".hero__tagline");
+    if (tagline && d.tagline) tagline.textContent = d.tagline;
+    var cta = sec.querySelector(".hero__cta");
+    if (cta && d.cta_primary && d.cta_secondary) {
+      cta.innerHTML =
+        '<a href="' + esc(d.cta_primary.href) + '" class="btn btn--order btn--lg">' + esc(d.cta_primary.label) + "</a>" +
+        '<a href="' + esc(d.cta_secondary.href) + '" class="btn btn--ghost btn--lg">' + esc(d.cta_secondary.label) + "</a>";
+    }
+  }
+
+  function renderMenu(sectionId, d) {
+    var sec = document.getElementById(sectionId);
+    if (!sec || !d) return;
+    var head = sec.querySelector(".section-head");
+    if (head) head.innerHTML =
+      '<span class="kicker" data-reveal>' + esc(d.kicker) + "</span>" +
+      titleHTML(d) +
+      '<p class="section-sub" data-reveal>' + esc(d.subtitle) + "</p>";
+    var heroWrap = sec.querySelector(".menu-hero");
+    if (heroWrap) heroWrap.innerHTML = (d.hero_items || []).map(menuCard).join("");
+    var gridWrap = sec.querySelector(".menu-grid");
+    if (gridWrap) gridWrap.innerHTML = (d.grid_items || []).map(menuCard).join("");
+    var cta = sec.querySelector(".counter__cta");
+    if (cta && d.cta) cta.textContent = d.cta;
+  }
+
+  function renderLocations(d) {
+    var sec = document.getElementById("locations");
+    if (!sec || !d) return;
+    var intro = sec.querySelector(".locations__intro");
+    if (intro) intro.innerHTML =
+      '<span class="kicker kicker--light" data-reveal>' + esc(d.kicker) + "</span>" +
+      titleHTML(d, "section-title--light");
+    var bgTag = sec.querySelector(".locations__img .ph__tag");
+    if (bgTag && d.bg_tag) bgTag.textContent = d.bg_tag;
+    var grid = sec.querySelector(".loc-grid");
+    if (grid) grid.innerHTML = (d.cards || []).map(function (c) {
+      return '<a class="loc-card" href="' + esc(c.href) + '" data-reveal>' +
+        '<span class="loc-card__num">' + esc(c.num) + "</span>" +
+        '<h3 class="loc-card__name">' + esc(c.name) + "</h3>" +
+        '<p class="loc-card__tag">' + esc(c.tag) + "</p>" +
+        '<span class="loc-card__link">' + esc(c.link_label) + "</span>" +
+        "</a>";
+    }).join("");
+  }
+
+  function renderAbout(d) {
+    var sec = document.getElementById("about");
+    if (!sec || !d) return;
+    var head = sec.querySelector(".about__head");
+    if (head) head.innerHTML =
+      '<span class="kicker" data-reveal>' + esc(d.kicker) + "</span>" + titleHTML(d);
+    var copy = sec.querySelector(".about__copy");
+    if (copy) {
+      var html = (d.paragraphs || []).map(function (p) { return "<p>" + esc(p) + "</p>"; }).join("");
+      html += '<ul class="about__facts">' + (d.facts || []).map(function (f) {
+        return "<li><b>" + esc(f.label) + "</b><span>" + esc(f.detail) + "</span></li>";
+      }).join("") + "</ul>";
+      copy.innerHTML = html;
+    }
+  }
+
+  function renderReviews(d) {
+    var sec = document.getElementById("reviews");
+    if (!sec || !d) return;
+    var head = sec.querySelector(".section-head");
+    if (head) head.innerHTML =
+      '<span class="kicker" data-reveal>' + esc(d.kicker) + "</span>" + titleHTML(d);
+    var grid = sec.querySelector(".review-grid");
+    if (grid) grid.innerHTML = (d.items || []).map(function (r) {
+      var n = Math.max(0, Math.min(5, parseInt(r.stars, 10) || 0));
+      var stars = new Array(n + 1).join("★");
+      return '<figure class="review" data-reveal>' +
+        '<div class="review__stars">' + stars + "</div>" +
+        "<blockquote>“" + esc(r.quote) + "”</blockquote>" +
+        "<figcaption>" + esc(r.source) + "</figcaption>" +
+        "</figure>";
+    }).join("");
+  }
+
+  function renderInfo(d) {
+    var info = document.getElementById("order");
+    if (!info || !d) return;
+    info.innerHTML = (d.columns || []).map(function (c) {
+      var cls = "info__col" + (c.note ? " info__col--note" : "");
+      var lines = (c.lines || []).map(esc).join("<br>");
+      var btn = (!c.note && c.cta && c.cta.label)
+        ? '<a class="btn btn--order" href="' + esc(c.cta.href || "#") + '">' + esc(c.cta.label) + "</a>"
+        : "";
+      return '<div class="' + cls + '" data-reveal><h3>' + esc(c.title) + "</h3><p>" + lines + "</p>" + btn + "</div>";
+    }).join("");
+  }
+
+  function renderContent() {
+    return Promise.all([
+      getJSON("content/hero.json"),
+      getJSON("content/counter.json"),
+      getJSON("content/bowls.json"),
+      getJSON("content/locations.json"),
+      getJSON("content/about.json"),
+      getJSON("content/reviews.json"),
+      getJSON("content/info.json")
+    ]).then(function (r) {
+      renderHero(r[0]);
+      renderMenu("menu", r[1]);
+      renderMenu("bowls", r[2]);
+      renderLocations(r[3]);
+      renderAbout(r[4]);
+      renderReviews(r[5]);
+      renderInfo(r[6]);
+    });
+  }
+
+  var start = window.__initMotion || function () {};
+  renderContent().then(start).catch(function (e) {
+    // Keep the built-in fallback content and still run the motion layer.
+    if (window.console) console.error("[Papas] content render failed, using built-in fallback:", e);
+    start();
+  });
 })();
 
 </script>

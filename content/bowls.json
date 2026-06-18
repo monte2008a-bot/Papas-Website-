@@ -1,0 +1,17 @@
+{
+  "kicker": "02 — The Bowls",
+  "title_line1": "The bowls,",
+  "title_line2": "brimming over.",
+  "subtitle": "Cut off the block, piled high over rice or greens. The crowd favorite twice over — then the rest of the lineup. Hover any piece to turn it in the light.",
+  "cta": "Order the Bowls",
+  "hero_items": [
+    { "tag": "Most Ordered", "feature": true, "style_a": "sear", "style_b": "bowl", "name": "Tri-Tip Rice Bowl", "price": "$15" },
+    { "tag": "Tri-Tip · ¾ View", "feature": false, "style_a": "bowl", "style_b": "sear", "name": "Tri-Tip Rice Bowl", "price": "$15" }
+  ],
+  "grid_items": [
+    { "tag": "New", "style_a": "sea", "style_b": "bowl", "name": "Salmon Poke Bowl", "price": "$16" },
+    { "tag": "", "style_a": "char", "style_b": "meat", "name": "Carne Asada Bowl", "price": "$14" },
+    { "tag": "", "style_a": "bowl", "style_b": "sear", "name": "Chicken Pesto Bowl", "price": "$14" },
+    { "tag": "Veg", "style_a": "bowl", "style_b": "cream", "name": "Mediterranean Bowl", "price": "$13" }
+  ]
+}

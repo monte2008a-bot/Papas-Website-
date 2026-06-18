@@ -1,0 +1,21 @@
+{
+  "columns": [
+    {
+      "title": "Burbank",
+      "lines": ["Address line, Burbank, CA", "Mon–Sat 9–7 · Sun 9–5", "(818) ___-____"],
+      "cta": { "label": "Order Burbank", "href": "#" },
+      "note": false
+    },
+    {
+      "title": "La Crescenta",
+      "lines": ["Address line, La Crescenta, CA", "Mon–Sun 8–8", "(818) ___-____"],
+      "cta": { "label": "Order La Crescenta", "href": "#" },
+      "note": false
+    },
+    {
+      "title": "Papas",
+      "lines": ["A family butcher & kitchen.", "Cut to order, made with care,", "served like it matters."],
+      "note": true
+    }
+  ]
+}

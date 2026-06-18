@@ -1,0 +1,5 @@
+{
+  "tagline": "The Italian Butcher Shop",
+  "cta_primary": { "label": "Order Now", "href": "#order" },
+  "cta_secondary": { "label": "View the Counter", "href": "#menu" }
+}

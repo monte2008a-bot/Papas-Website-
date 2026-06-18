@@ -1,0 +1,17 @@
+{
+  "kicker": "01 — The Counter",
+  "title_line1": "The sandwiches,",
+  "title_line2": "up close.",
+  "subtitle": "Our most-ordered, twice over — then the rest of the lineup. Hover any piece to turn it in the light.",
+  "cta": "Order the Counter",
+  "hero_items": [
+    { "tag": "Most Ordered", "feature": true, "style_a": "char", "style_b": "meat", "name": "Pastrami on Rye", "price": "$15" },
+    { "tag": "Pastrami · ¾ View", "feature": false, "style_a": "meat", "style_b": "char", "name": "Pastrami on Rye", "price": "$15" }
+  ],
+  "grid_items": [
+    { "tag": "New", "style_a": "sear", "style_b": "char", "name": "Tri-Tip", "price": "$14" },
+    { "tag": "New", "style_a": "meat", "style_b": "sear", "name": "The Italian", "price": "$14" },
+    { "tag": "", "style_a": "char", "style_b": "meat", "name": "Meatball Parm", "price": "$13" },
+    { "tag": "", "style_a": "bowl", "style_b": "sea", "name": "Chicken Cutlet", "price": "$13" }
+  ]
+}
